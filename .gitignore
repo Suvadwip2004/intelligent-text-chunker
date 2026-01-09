@@ -10,7 +10,9 @@
 pyvenv.cfg
 .venv
 pip-selfcheck.json
-
+*txt
+*json
+*joblib
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

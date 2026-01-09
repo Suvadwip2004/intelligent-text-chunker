@@ -11,12 +11,15 @@ def create_embedding(text_list):
     return r.json()["embeddings"]
 
 def create_embedded_df(json_chunks):
-
+    my_dict = []
     text_list = [c['text'] for c in json_chunks['chunks'] ]
 
     embeddings  = create_embedding(text_list)
+    
 
     for i,chunk in enumerate(json_chunks['chunks']):
-        chunk["embedding"] = embeddings[i]
         
-    return json_chunks
+        chunk["embedding"] = embeddings[i]
+
+        my_dict.append(chunk)
+    return my_dict
