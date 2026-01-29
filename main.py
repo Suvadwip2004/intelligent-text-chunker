@@ -4,7 +4,12 @@ from src.create_joblib import create_joblib_file
 import pandas as pd
 import json
 import os
-files  = os.listdir("./data/")
+files_raw  = os.listdir("./data/")
+files  = []
+for file_txt in files_raw:
+    if file_txt.endswith("txt"):
+        files.append(file_txt)
+
 
 for file in files:
     with open(f"data/{file}","r",encoding="utf-8") as f:
