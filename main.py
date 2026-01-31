@@ -6,7 +6,7 @@ import json
 import os
 files_raw  = os.listdir("./data/")
 files  = []
-for file_txt in files_raw:
+for file_txt in files_raw: 
     if file_txt.endswith("txt"):
         files.append(file_txt)
 
