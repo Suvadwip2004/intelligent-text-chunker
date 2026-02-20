@@ -4,32 +4,32 @@ from src.create_joblib import create_joblib_file
 import pandas as pd
 import json
 import os
-files_raw  = os.listdir("./data/")
-files  = []
-for file_txt in files_raw: 
+
+files_raw = os.listdir("./data/")
+files = []
+
+for file_txt in files_raw:
     if file_txt.endswith("txt"):
         files.append(file_txt)
 
-
 for file in files:
-    with open(f"data/{file}","r",encoding="utf-8") as f:
-        text  = f.read()
+    with open(f"data/{file}", "r", encoding="utf-8") as f:
+        text = f.read()
+
     # json_chunks creation
-    json_chunks  = semantic_chunk_text(text)
+    json_chunks = semantic_chunk_text(text)
     file_rename = file.split(".t")[0]
+
     # json file creation
-    with open(f"json_data/{file_rename}.json","w",encoding="utf-8") as f:
-        json.dump(json_chunks,f)
+    with open(f"json_data/{file_rename}.json", "w", encoding="utf-8") as f:
+        json.dump(json_chunks, f)
+
     df = create_embedded_df(json_chunks)
-
-    
-
 
     print(f"done:{file} to {file_rename}.json")
 
     # create joblib file
-    joblib_message = create_joblib_file(df,file_rename)
+    joblib_message = create_joblib_file(df, file_rename)
     print(joblib_message)
-
 
 print("all done")
